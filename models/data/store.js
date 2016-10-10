@@ -86,12 +86,21 @@ module.exports = {
       .orderBy('create_time', 'asc')
       .first()
       .then(function (rec) {
+        var msg_id;
+
         if (!rec) {
           return false;
         }
 
-        return this.updateQueue(rec.id, 1, true)
-          .then(this.getData.bind(this, getFileName(rec.queue_id, rec.id)));
+        msg_id = rec.id;
+        return this.updateQueue(msg_id, 1, true)
+          .then(this.getData.bind(this, getFileName(rec.queue_id, msg_id)))
+          .then(function (msg_data) {
+            return {
+              data: msg_data,
+              id: msg_id
+            };
+          });
       }.bind(this));
   },
 
