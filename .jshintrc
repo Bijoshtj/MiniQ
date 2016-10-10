@@ -1,0 +1,39 @@
+/*
+* refer http://www.jshint.com/docs/options/
+**/
+{
+  "strict": true,
+  "curly": true,
+  "eqeqeq": true,
+  "immed": true,
+  "undef": true,
+  "onevar": true,
+  "bitwise": true,
+  "noempty": true,
+  "trailing": true,
+  "white": true,
+  "indent": 2,
+  "node": true,
+  "unused": true,
+  "maxlen": 80,
+  "maxdepth": 3,
+  "maxcomplexity": 15,
+  "quotmark": "single",
+   "globals"   : {
+    /* MOCHA */
+    "describe"   : false,
+    "it"         : false,
+    "before"     : false,
+    "beforeEach" : false,
+    "after"      : false,
+    "afterEach"  : false,
+    /* express */
+    "resp": false,
+    "response": false,
+    "res": false,
+    "req": false,
+    "request": false,
+    "err": false,
+    "error": false
+  }
+}

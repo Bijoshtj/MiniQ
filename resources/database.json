@@ -1,0 +1,22 @@
+{
+  "development": {
+    "driver": "mysql",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "user": "root",
+    "password": "candid",
+    "database": "miniq_dev",
+    "connectionLimit": 3,
+    "multipleStatements": true
+  },
+  "production": {
+    "driver": "mysql",
+    "host": "127.0.0.1",
+    "port": "3306",
+    "user": "uname",
+    "password": "pwd",
+    "database": "miniq",
+    "connectionLimit": 3,
+    "multipleStatements": true
+  }
+}
