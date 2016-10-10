@@ -54,7 +54,8 @@ module.exports = {
         required: true,
         type: 'string',
         min_len: 3,
-        max_len: 5
+        max_len: 5,
+        acceptables: ['ACK', 'NACK']
       }
     };
 

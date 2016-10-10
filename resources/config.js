@@ -7,7 +7,8 @@ var _ = require('lodash'),
 module.exports = {
   status: {
     OK: 200,
-    ERROR: 500
+    ERROR: 500,
+    BAD_REQ: 400
   },
 
   db: {
