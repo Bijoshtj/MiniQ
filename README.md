@@ -29,4 +29,5 @@ All api are of type post
 
 
 Dequeue non-acknowledged consumed message by setting up cronjob to run every 1 minute:
+
 cd /path/MiniQ && node tools/reque_nonack.js
