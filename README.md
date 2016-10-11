@@ -24,7 +24,8 @@ All api are of type post
 
 3. http://localhost:3000/ack:
    To acknowledge consumed queue data.
-   params: {id: 'data_id'}
+   params: {id: 'data_id', ack: 'ACK'}
+   ack value can be ACK/NACK
 
 
 Dequeue non-acknowledged consumed message by setting up cronjob to run every 1 minute:
