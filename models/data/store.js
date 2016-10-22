@@ -52,25 +52,18 @@ module.exports = {
       .first();
   },
 
-  updateQueue: function (id, status, consume) {
-    var opts = {
-      status: status
-    };
-
-    if (consume) {
-      opts.consumed_at = new Date();
-    }
-
+  onConsume: function (id) {
     return knex_obj('queue_data')
       .where('id', '=', id)
-      .update(opts);
+      .update({
+        consumed_at: new Date()
+      });
   },
 
   enqueue: function (queue_id, data) {
     return knex_obj('queue_data')
       .insert({
         queue_id: queue_id,
-        status: 0,
         create_time: new Date()
       })
       .then(function (resp) {
@@ -83,7 +76,7 @@ module.exports = {
   dequeue: function (queue_id) {
     return knex_obj('queue_data')
       .where('queue_id', '=', queue_id)
-      .whereNotNull('consumed_at')
+      .whereNull('consumed_at')
       .orderBy('create_time', 'asc')
       .first()
       .then(function (rec) {
@@ -94,7 +87,7 @@ module.exports = {
         }
 
         msg_id = rec.id;
-        return this.updateQueue(msg_id, 1, true)
+        return this.onConsume(msg_id)
           .then(this.getData.bind(this, getFileName(rec.queue_id, msg_id)))
           .then(function (msg_data) {
             return {
@@ -108,9 +101,7 @@ module.exports = {
   requeue: function (id) {
     return knex_obj('queue_data')
       .where('id', '=', id)
-      .whereNotNull('consumed_at')
       .update({
-        status: 0,
         consumed_at: null
       });
   },
@@ -135,7 +126,6 @@ module.exports = {
     return knex_obj('queue_data')
       .where('consumed_at', '<=', date)
       .update({
-        status: 0,
         consumed_at: null
       });
   }
