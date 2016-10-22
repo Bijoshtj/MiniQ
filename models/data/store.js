@@ -83,6 +83,7 @@ module.exports = {
   dequeue: function (queue_id) {
     return knex_obj('queue_data')
       .where('queue_id', '=', queue_id)
+      .whereNotNull('consumed_at')
       .orderBy('create_time', 'asc')
       .first()
       .then(function (rec) {
