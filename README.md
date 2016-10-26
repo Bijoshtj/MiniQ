@@ -6,7 +6,14 @@ Setup:
 3. Run migrations:
    db-migrate --config resources/database.json -m resources/migrations up
 4. start server:
+
    node server.js
+        OR
+
+   Daemonize using pm2 module:
+   npm install pm2 -g
+   pm2 start server.js --name="miniq-server" -i 4
+   //Here 4 instance of app in cluster mode. it shouldnt be more than no of cpu cores for better performance
 
 Now Application will be running on default port 3000.
 
