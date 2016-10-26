@@ -3,8 +3,8 @@
     "driver": "mysql",
     "host": "127.0.0.1",
     "port": "3306",
-    "user": "root",
-    "password": "candid",
+    "user": "uminiq",
+    "password": "",
     "database": "miniq_dev",
     "connectionLimit": 3,
     "multipleStatements": true
@@ -13,8 +13,8 @@
     "driver": "mysql",
     "host": "127.0.0.1",
     "port": "3306",
-    "user": "uname",
-    "password": "pwd",
+    "user": "uminiq",
+    "password": "",
     "database": "miniq",
     "connectionLimit": 3,
     "multipleStatements": true
